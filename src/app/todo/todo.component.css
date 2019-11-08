@@ -1,3 +1,13 @@
+#to-do-list-form {
+  background-color: white;
+  padding: 20px;
+  margin: 20px 300px;
+}
+
 .completed-task {
   text-decoration: line-through;
+}
+
+#add-button {
+  background-color: #ff1493;
 }

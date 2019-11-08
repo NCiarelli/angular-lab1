@@ -1,8 +1,8 @@
-<form>
+<form id="to-do-list-form">
   <h1>TODO List</h1>
   <p>A place to store your todos</p>
   <input type="text" name="filter" id="filter" placeholder="Filter your to-dos">
-  <ol>
+  <ol id="to-do-list">
     <li class="todo-item" *ngFor="let todoItem of sampleToDos">
       <button *ngIf="!todoItem.completed">Complete</button>
       <span [class.completed-task]="todoItem.completed">{{todoItem.task}}</span>
