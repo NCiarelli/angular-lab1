@@ -83,3 +83,7 @@ button:hover {
 .todo-text:hover {
   cursor: pointer;
 }
+
+.todo-edit{
+  display: inline;
+}

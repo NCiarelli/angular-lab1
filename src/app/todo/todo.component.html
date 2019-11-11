@@ -1,13 +1,17 @@
 <section id="to-do-list-section">
   <h1 id="todo-heading">TODO List</h1>
-  <p id="todo-description">A place to store your todos</p>
+  <p id="todo-description">A place to store your todos. Click on a todo item to edit it.</p>
   <input type="text" name="filter-text" id="filter-text" placeholder="Filter your to-dos" [(ngModel)]="taskFilter">
   <button type="button" id="clear-filter" (click)="clearFilter()">Clear Filter</button>
   <ol id="to-do-list">
     <li class="todo-item" *ngFor="let todoItem of filterTodoItems()">
       <button type="button" *ngIf="!todoItem.completed" class="complete-button"
         (click)="completeTask(todoItem)">Complete</button>
-      <span class="todo-text" [class.completed-task]="todoItem.completed">{{todoItem.task}}</span>
+      <span class="todo-text" [class.completed-task]="todoItem.completed" (click)="startEdit(todoItem)"
+        *ngIf="!todoItem.editing">{{todoItem.task}}</span>
+      <form action="" *ngIf="todoItem.editing" (ngSubmit)="taskEdit(todoItem)" class="todo-edit">
+        <input type="text" name="todo-edit" [(ngModel)]="todoItem.task">
+      </form>
       <button type="button" class="remove-button" (click)="removeTask(todoItem)">X</button>
     </li>
   </ol>

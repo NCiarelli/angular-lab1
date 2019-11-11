@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Todo } from '../../interfaces/todo';
 
 @Component({
@@ -7,30 +7,32 @@ import { Todo } from '../../interfaces/todo';
   styleUrls: ['./todo.component.css']
 })
 export class TodoComponent implements OnInit {
+  // @ViewChild('editingTask') editingTask: ElementRef;
 
   constructor() { }
 
   ngOnInit() {
   }
   displayedToDos: Todo[] = [
-    { task: "fold clothes", completed: false },
-    { task: "put clothes in dresser", completed: false },
-    { task: "relax", completed: false },
-    { task: "try to pet cat", completed: true },
-    { task: "pet dog", completed: false },
-    { task: "be awesome", completed: false }
+    { task: "fold clothes", completed: false, editing: false },
+    { task: "put clothes in dresser", completed: false, editing: false },
+    { task: "relax", completed: false, editing: false },
+    { task: "try to pet cat", completed: true, editing: false },
+    { task: "pet dog", completed: false, editing: false },
+    { task: "be awesome", completed: false, editing: false }
   ];
 
   taskFilter: string = "";
   todoToAdd: Todo = {
     task: "",
-    completed: false
+    completed: false,
+    editing: false
   };
 
   // function to add tasks to the to-do list from the to-do-list form
   addTask(): void {
     this.displayedToDos.push(this.todoToAdd);
-    this.todoToAdd = { task: "", completed: false };
+    this.todoToAdd = { task: "", completed: false, editing: false };
   }
 
   // Function to mark a task as completed and remove the complete button (done through a CSS class linked to the completed flag)
@@ -56,5 +58,13 @@ export class TodoComponent implements OnInit {
 
   clearFilter(): void {
     this.taskFilter = "";
+  }
+
+  startEdit(taskClicked: Todo) {
+    taskClicked.editing = true;
+  }
+
+  taskEdit(taskToEdit: Todo) {
+    taskToEdit.editing = false;
   }
 }
