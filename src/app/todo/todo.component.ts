@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Todo } from '../todo';
+import { Todo } from '../../interfaces/todo';
 
 @Component({
   selector: 'app-todo',
@@ -12,7 +12,7 @@ export class TodoComponent implements OnInit {
 
   ngOnInit() {
   }
-  sampleToDos: Todo[] = [
+  displayedToDos: Todo[] = [
     { task: "fold clothes", completed: false },
     { task: "put clothes in dresser", completed: false },
     { task: "relax", completed: false },
