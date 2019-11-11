@@ -1,4 +1,4 @@
-#to-do-list-form {
+#to-do-list-section {
   background-color: white;
   padding: 20px;
   margin: 20px 10%;
@@ -11,14 +11,19 @@
   text-decoration: line-through;
 }
 
+#clear-filter,
 #add-button {
   background-color: #ff1493;
   border-radius: 5px;
   color: white;
   border: none;
+}
+
+#add-button {
   display: block;
   width: 100%;
 }
+
 
 .complete-button {
   background-color: white;
@@ -69,5 +74,12 @@
 }
 
 button:hover {
+  cursor: pointer;
+}
+
+.todo-text{
+  margin-right: 30px;
+}
+.todo-text:hover {
   cursor: pointer;
 }

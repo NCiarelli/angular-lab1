@@ -1,14 +1,18 @@
-<form id="to-do-list-form">
+<section id="to-do-list-section">
   <h1 id="todo-heading">TODO List</h1>
   <p id="todo-description">A place to store your todos</p>
-  <input type="text" name="filter-text" id="filter-text" placeholder="Filter your to-dos">
+  <input type="text" name="filter-text" id="filter-text" placeholder="Filter your to-dos" [(ngModel)]="taskFilter">
+  <button type="button" id="clear-filter" (click)="clearFilter()">Clear Filter</button>
   <ol id="to-do-list">
-    <li class="todo-item" *ngFor="let todoItem of displayedToDos; index as i">
-      <button type="button" *ngIf="!todoItem.completed" class="complete-button">Complete</button>
+    <li class="todo-item" *ngFor="let todoItem of filterTodoItems()">
+      <button type="button" *ngIf="!todoItem.completed" class="complete-button"
+        (click)="completeTask(todoItem)">Complete</button>
       <span class="todo-text" [class.completed-task]="todoItem.completed">{{todoItem.task}}</span>
-      <button type="button" class="remove-button">X</button>
+      <button type="button" class="remove-button" (click)="removeTask(todoItem)">X</button>
     </li>
   </ol>
-  <input type="text" name="add-text" id="add-text" placeholder="Add your to-do">
-  <button type="submit" id="add-button">Add</button>
-</form>
+  <form id="to-do-list-form" (ngSubmit)="addTask()">
+    <input type="text" name="add-text" id="add-text" placeholder="Add your to-do" [(ngModel)]="todoToAdd.task">
+    <button type="submit" id="add-button">Add</button>
+  </form>
+</section>
