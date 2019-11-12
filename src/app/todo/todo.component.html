@@ -10,7 +10,7 @@
       <span class="todo-text" [class.completed-task]="todoItem.completed" (click)="startEdit(todoItem)"
         *ngIf="!todoItem.editing">{{todoItem.task}}</span>
       <form action="" *ngIf="todoItem.editing" (ngSubmit)="taskEdit(todoItem)" class="todo-edit">
-        <input type="text" name="todo-edit" [(ngModel)]="todoItem.task">
+        <input type="text" name="todo-edit" [(ngModel)]="todoItem.task" #editingTask>
       </form>
       <button type="button" class="remove-button" (click)="removeTask(todoItem)">X</button>
     </li>

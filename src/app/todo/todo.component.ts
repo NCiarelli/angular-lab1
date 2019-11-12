@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { Todo } from '../../interfaces/todo';
 
 @Component({
@@ -7,7 +7,8 @@ import { Todo } from '../../interfaces/todo';
   styleUrls: ['./todo.component.css']
 })
 export class TodoComponent implements OnInit {
-  // @ViewChild('editingTask') editingTask: ElementRef;
+  // // Trying to get the edit text input to focus when enabled
+  // @ViewChild('editingTask', { static: false }) editingTask: ElementRef;
 
   constructor() { }
 
@@ -62,9 +63,14 @@ export class TodoComponent implements OnInit {
 
   startEdit(taskClicked: Todo) {
     taskClicked.editing = true;
+    // // Trying to get the edit text input to focus when enabled
+    // const editEl = this.editingTask.nativeElement;
+    // setTimeout(() => editEl.focus(), 0);
   }
 
   taskEdit(taskToEdit: Todo) {
     taskToEdit.editing = false;
   }
+
+
 }

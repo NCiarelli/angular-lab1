@@ -87,3 +87,7 @@ button:hover {
 .todo-edit{
   display: inline;
 }
+
+.hide {
+  display: none;
+}
